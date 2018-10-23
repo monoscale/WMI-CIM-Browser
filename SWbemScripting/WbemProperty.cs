@@ -1,9 +1,9 @@
-﻿using SWbemLibrary.Constants;
-using System;
+﻿using System;
 using System.Management;
+using WbemLibrary.Constants;
 
-namespace SWbemLibrary {
-    public class SWbemProperty {
+namespace WbemLibrary {
+    public class WbemProperty {
 
 
         public WbemCimTypeEnum Cimtype {
@@ -21,7 +21,7 @@ namespace SWbemLibrary {
         //qualifiers
         public object Value { get; set; }
 
-        public SWbemProperty(PropertyData propertyData) {
+        public WbemProperty(PropertyData propertyData) {
 
             IsArray = propertyData.IsArray;
             Name = propertyData.Name;

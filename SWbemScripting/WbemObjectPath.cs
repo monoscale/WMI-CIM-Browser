@@ -1,7 +1,7 @@
 ﻿using System.Management;
 
-namespace SWbemLibrary {
-    public class SWbemObjectPath {
+namespace WbemLibrary {
+    public class WbemObjectPath {
 
         // string authority
         public string ClassName { get; set; }
@@ -12,7 +12,7 @@ namespace SWbemLibrary {
         public string RelPath { get; set; }
         public string Server { get; set; }
 
-        public SWbemObjectPath(ManagementPath path) {
+        public WbemObjectPath(ManagementPath path) {
             ClassName = path.ClassName;
             IsClass = path.IsClass;
             IsSingleton = path.IsSingleton;

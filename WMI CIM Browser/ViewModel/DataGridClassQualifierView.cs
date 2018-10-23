@@ -1,4 +1,4 @@
-﻿using SWbemLibrary;
+﻿using WbemLibrary;
 
 namespace WMI_CIM_Browser.ViewModel {
     public class DataGridClassQualifierView {
@@ -11,7 +11,7 @@ namespace WMI_CIM_Browser.ViewModel {
         public bool IsAmended { get; private set; }
         public bool IsLocal { get; private set; }
 
-        public DataGridClassQualifierView(SWbemQualifier qualifier) {
+        public DataGridClassQualifierView(WbemQualifier qualifier) {
             Name = qualifier.Name; 
             CimType = (qualifier.Value.GetType().ToString().Split('.'))[1];
             Value = qualifier.Value.ToString();

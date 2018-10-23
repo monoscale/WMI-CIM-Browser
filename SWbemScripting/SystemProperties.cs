@@ -1,4 +1,4 @@
-﻿namespace SWbemLibrary {
+﻿namespace WbemLibrary {
     public class SystemProperties { // not an enum because I want to be able to type SystemProperties.__CLASS  and get the string
         public static string __CLASS { get { return "__CLASS"; } }
         public static string __DERIVATION { get { return "__DERIVATION"; } }

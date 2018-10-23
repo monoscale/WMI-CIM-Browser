@@ -1,7 +1,7 @@
 ﻿using System.Management;
 
-namespace SWbemLibrary {
-    public class SWbemSecurity {
+namespace WbemLibrary {
+    public class WbemSecurity {
         public AuthenticationLevel AuthenticationLevel { get; set; }
         public ImpersonationLevel ImpersonationLevel { get; set; }
 

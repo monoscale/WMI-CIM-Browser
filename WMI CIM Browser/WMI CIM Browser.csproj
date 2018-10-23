@@ -98,9 +98,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SWbemScripting\SWbemScripting.csproj">
+    <ProjectReference Include="..\SWbemScripting\WbemLibrary.csproj">
       <Project>{ed9977b8-457e-430a-a0ea-e78dec3ad33e}</Project>
-      <Name>SWbemScripting</Name>
+      <Name>WbemLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,11 +1,9 @@
-﻿using SWbemLibrary.Exceptions;
-using System.Management;
-using System.Runtime.InteropServices;
+﻿using System.Management;
 
-namespace SWbemLibrary {
-    public class SWbemLocator {
+namespace WbemLibrary {
+    public class WbemLocator {
 
-        public SWbemSecurity SWbemSecurity { get; set; }
+        public WbemSecurity SWbemSecurity { get; set; }
 
         /// <summary>
         /// </summary>
@@ -18,21 +16,21 @@ namespace SWbemLibrary {
         /// <param name="iSecurityFlags"></param>
         /// <param name="objwbemNamedValueSet"></param>
         /// <returns></returns>
-        public SWbemService ConnectServer(string strServer = "."
+        public WbemService ConnectServer(string strServer = "."
             , string strNamespace = ""
             , string strUser = ""
             , string strPassword = ""
             , string strLocale = ""
             , string strAuthority = ""
             , int iSecurityFlags = 0
-            , SWbemNamedValueSet objwbemNamedValueSet = null) {
+            , WbemNamedValueSet objwbemNamedValueSet = null) {
 
             ManagementPath path = new ManagementPath {
                 Server = strServer,
                 NamespacePath = strNamespace
             };
             ManagementScope scope = new ManagementScope(path);
-            return new SWbemService(scope);
+            return new WbemService(scope);
 
         }
     }

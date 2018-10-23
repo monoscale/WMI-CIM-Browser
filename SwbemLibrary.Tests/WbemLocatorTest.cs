@@ -1,25 +1,23 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SWbemLibrary;
-using SWbemLibrary.Exceptions;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WbemLibrary;
 
-namespace SwbemLibrary.Tests {
+namespace WbemLibrary.Tests {
     [TestClass]
     public class SWbemLocatorTest {
 
-        private SWbemLocator locator;
+        private WbemLocator locator;
 
         private string localServer = ".";
         private string rootcimv2 = "root/cimv2";
 
         [TestInitialize]
         public void Initialize() {
-            locator = new SWbemLocator();
+            locator = new WbemLocator();
         }
 
         [TestMethod]
         public void CorrectNamespaceReturnsSWbemServiceObject() {
-            SWbemService service = locator.ConnectServer(localServer, rootcimv2);
+            WbemService service = locator.ConnectServer(localServer, rootcimv2);
             Assert.IsNotNull(service);
         }
 

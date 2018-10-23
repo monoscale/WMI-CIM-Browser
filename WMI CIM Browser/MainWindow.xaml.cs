@@ -6,8 +6,7 @@ using System;
 using System.Windows.Controls;
 using System.Data;
 using WMI_CIM_Browser.ViewModel;
-using SWbemLibrary;
-using SWbemLibrary.Exceptions;
+using WbemLibrary;
 
 namespace WMI_CIM_Browser {
     /// <summary>
@@ -15,11 +14,11 @@ namespace WMI_CIM_Browser {
     /// </summary>
     public partial class MainWindow : Window {
 
-        SWbemLocator locator;
-        SWbemService service;
+        WbemLocator locator;
+        WbemService service;
 
         public void Initialize() {
-            locator = new SWbemLocator();
+            locator = new WbemLocator();
             WindowState = WindowState.Maximized;
         }
 
@@ -29,8 +28,8 @@ namespace WMI_CIM_Browser {
             GetClassesForNamespace("root");
         }
 
-        private SWbemObject GetSWbemObjectForTreeViewItem(TreeViewItem treeViewItem) {
-            return (SWbemObject)treeViewItem.DataContext;
+        private WbemObject GetSWbemObjectForTreeViewItem(TreeViewItem treeViewItem) {
+            return (WbemObject)treeViewItem.DataContext;
         }
 
 
@@ -51,11 +50,11 @@ namespace WMI_CIM_Browser {
             ClassNavigator.Items.Clear();
             try {
                 service = locator.ConnectServer(".", nameSpace);
-                IList<SWbemObject> objects = service.ExecQuery("select * from meta_class");
+                IList<WbemObject> objects = service.ExecQuery("select * from meta_class");
 
                 // dictionary bijhouden waarbij de key een ManagementObject is, en de daarbij horende TreeViewItem
-                Dictionary<SWbemObject, TreeViewItem> subClassesForClass = new Dictionary<SWbemObject, TreeViewItem>();
-                foreach (SWbemObject mObject in objects) {
+                Dictionary<WbemObject, TreeViewItem> subClassesForClass = new Dictionary<WbemObject, TreeViewItem>();
+                foreach (WbemObject mObject in objects) {
                     string superclass = (string)mObject.SystemProperties[SystemProperties.__SUPERCLASS].Value;
                     if (superclass == null) { // current mObject is a root class
                         TreeViewItem treeViewItem = new TreeViewItem {
@@ -67,7 +66,7 @@ namespace WMI_CIM_Browser {
                         ClassNavigator.Items.Add(treeViewItem);
                     } else {
                         // find the direct superclass of the current managementobject
-                        foreach (SWbemObject innermObject in subClassesForClass.Keys.ToList()) {
+                        foreach (WbemObject innermObject in subClassesForClass.Keys.ToList()) {
                             if ((string)mObject.SystemProperties[SystemProperties.__SUPERCLASS].Value == innermObject.Path.ClassName) {
                                 // we found the superclass, add mObject to the treeviewitem of innermObject
                                 TreeViewItem innerTreeViewItem = new TreeViewItem {
@@ -104,15 +103,15 @@ namespace WMI_CIM_Browser {
             PropertyList.ItemsSource = null;
 
             TreeViewItem treeViewItem = (TreeViewItem)ClassNavigator.SelectedItem;
-            SWbemObject mObject = (SWbemObject)treeViewItem.DataContext;
+            WbemObject mObject = (WbemObject)treeViewItem.DataContext;
 
             TextBlockCurrentClass.Text = mObject.Path.ClassName;
             TextBlockCurrentClass.DataContext = mObject;
 
-            IList<DataGridPropertyView> properties = (from SWbemProperty property
+            IList<DataGridPropertyView> properties = (from WbemProperty property
                                                       in mObject.GetAllProperties().Values
                                                       select property).ToList().Select(s => new DataGridPropertyView(s)).ToList();
-            IList<SWbemMethod> methods = (from SWbemMethod method
+            IList<WbemMethod> methods = (from WbemMethod method
                                           in mObject.Methods.Values
                                           select method).ToList();
 
@@ -122,9 +121,9 @@ namespace WMI_CIM_Browser {
         }
 
         private void TextBlockCurrentClass_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e) {
-            SWbemObject mObject = GetSWbemObjectForTreeViewItem((TreeViewItem)ClassNavigator.SelectedItem);
+            WbemObject mObject = GetSWbemObjectForTreeViewItem((TreeViewItem)ClassNavigator.SelectedItem);
 
-            IList<DataGridClassQualifierView> qualifiers = (from SWbemQualifier property
+            IList<DataGridClassQualifierView> qualifiers = (from WbemQualifier property
                                                             in mObject.Qualifiers.Values
                                                             select property).ToList().Select(s => new DataGridClassQualifierView(s)).ToList();
             ExtraDetails.ItemsSource = qualifiers;

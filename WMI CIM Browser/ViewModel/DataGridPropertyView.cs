@@ -1,4 +1,4 @@
-﻿using SWbemLibrary;
+﻿using WbemLibrary;
 
 namespace WMI_CIM_Browser.ViewModel {
     public class DataGridPropertyView { // class used to wrap a PropertyData class
@@ -8,7 +8,7 @@ namespace WMI_CIM_Browser.ViewModel {
         public string Value { get; private set; }
         public string Description { get; private set; }
 
-        public DataGridPropertyView(SWbemProperty property) {
+        public DataGridPropertyView(WbemProperty property) {
             Name = property.Name;
 
             if (property.IsArray) {

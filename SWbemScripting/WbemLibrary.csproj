@@ -7,8 +7,8 @@
     <ProjectGuid>{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SWbemLibrary</RootNamespace>
-    <AssemblyName>SWbemLibrary</AssemblyName>
+    <RootNamespace>WbemLibrary</RootNamespace>
+    <AssemblyName>WbemLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -44,15 +44,15 @@
   <ItemGroup>
     <Compile Include="Constants\WbemCimTypeEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SWbemLocator.cs" />
-    <Compile Include="SWbemMethod.cs" />
-    <Compile Include="SWbemNamedValueSet.cs" />
-    <Compile Include="SWbemObject.cs" />
-    <Compile Include="SWbemObjectPath.cs" />
-    <Compile Include="SWbemProperty.cs" />
-    <Compile Include="SWbemQualifier.cs" />
-    <Compile Include="SWbemSecurity.cs" />
-    <Compile Include="SWbemService.cs" />
+    <Compile Include="WbemLocator.cs" />
+    <Compile Include="WbemMethod.cs" />
+    <Compile Include="WbemNamedValueSet.cs" />
+    <Compile Include="WbemObject.cs" />
+    <Compile Include="WbemObjectPath.cs" />
+    <Compile Include="WbemProperty.cs" />
+    <Compile Include="WbemQualifier.cs" />
+    <Compile Include="WbemSecurity.cs" />
+    <Compile Include="WbemService.cs" />
     <Compile Include="SystemProperties.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

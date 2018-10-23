@@ -1,7 +1,7 @@
 ﻿using System.Management;
 
-namespace SWbemLibrary {
-    public class SWbemQualifier {
+namespace WbemLibrary {
+    public class WbemQualifier {
         public string Name { get; private set; }
         public string CimType { get; private set; }
         public string Value { get; private set; }
@@ -11,7 +11,7 @@ namespace SWbemLibrary {
         public bool IsAmended { get; private set; }
         public bool IsLocal { get; private set; }
 
-        public SWbemQualifier(QualifierData data) {
+        public WbemQualifier(QualifierData data) {
             Name = data.Name;
             // CimType = (data.Value.GetType().ToString().Split('.'))[1];
             Value = data.Value.ToString();

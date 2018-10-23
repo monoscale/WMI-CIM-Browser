@@ -1,10 +1,10 @@
 ﻿using System.Management;
 
-namespace SWbemLibrary {
-    public class SWbemMethod {
+namespace WbemLibrary {
+    public class WbemMethod {
         public string Name { get; set; }
 
-        public SWbemMethod(MethodData data) {
+        public WbemMethod(MethodData data) {
             Name = data.Name;
         }
     }
