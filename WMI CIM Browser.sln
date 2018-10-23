@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMI CIM Browser", "WMI CIM Browser\WMI CIM Browser.csproj", "{88E66075-6E9C-417F-8000-ABC2FF132126}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWbemScripting", "SWbemScripting\SWbemScripting.csproj", "{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88E66075-6E9C-417F-8000-ABC2FF132126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88E66075-6E9C-417F-8000-ABC2FF132126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88E66075-6E9C-417F-8000-ABC2FF132126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88E66075-6E9C-417F-8000-ABC2FF132126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8B837F1-A1C6-45A7-8317-7EFB97F74F7A}
+	EndGlobalSection
+EndGlobal
