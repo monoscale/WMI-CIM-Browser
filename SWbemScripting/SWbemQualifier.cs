@@ -1,6 +1,6 @@
 ﻿using System.Management;
 
-namespace SWbemScripting {
+namespace SWbemLibrary {
     public class SWbemQualifier {
         public string Name { get; private set; }
         public string CimType { get; private set; }

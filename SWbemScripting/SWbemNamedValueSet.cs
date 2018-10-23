@@ -1,4 +1,4 @@
-﻿namespace SWbemScripting {
+﻿namespace SWbemLibrary {
     public class SWbemNamedValueSet {
     }
 }

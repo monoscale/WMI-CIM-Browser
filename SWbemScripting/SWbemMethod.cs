@@ -1,6 +1,6 @@
 ﻿using System.Management;
 
-namespace SWbemScripting {
+namespace SWbemLibrary {
     public class SWbemMethod {
         public string Name { get; set; }
 

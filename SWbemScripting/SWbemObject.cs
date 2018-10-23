@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Management;
 using System.Linq;
 
-namespace SWbemScripting {
+namespace SWbemLibrary {
     public class SWbemObject {
 
         public SWbemObjectPath Path { get; set; }

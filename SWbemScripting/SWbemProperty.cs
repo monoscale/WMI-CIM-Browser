@@ -1,8 +1,8 @@
-﻿using SWbemScripting.Constants;
+﻿using SWbemLibrary.Constants;
 using System;
 using System.Management;
 
-namespace SWbemScripting {
+namespace SWbemLibrary {
     public class SWbemProperty {
 
 

@@ -1,4 +1,4 @@
-﻿using SWbemScripting;
+﻿using SWbemLibrary;
 
 namespace WMI_CIM_Browser.ViewModel {
     public class DataGridPropertyView { // class used to wrap a PropertyData class

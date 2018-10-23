@@ -2,7 +2,7 @@
 using System.Management;
 using System.Linq;
 
-namespace SWbemScripting {
+namespace SWbemLibrary {
     public class SWbemService {
 
         private ManagementScope scope;

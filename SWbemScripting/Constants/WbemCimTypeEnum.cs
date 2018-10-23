@@ -1,4 +1,4 @@
-﻿namespace SWbemScripting.Constants {
+﻿namespace SWbemLibrary.Constants {
     public enum WbemCimTypeEnum {
         
         /// <summary>

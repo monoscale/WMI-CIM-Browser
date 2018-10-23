@@ -7,8 +7,8 @@
     <ProjectGuid>{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SWbemScripting</RootNamespace>
-    <AssemblyName>SWbemScripting</AssemblyName>
+    <RootNamespace>SWbemLibrary</RootNamespace>
+    <AssemblyName>SWbemLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -55,6 +55,5 @@
     <Compile Include="SWbemService.cs" />
     <Compile Include="SystemProperties.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

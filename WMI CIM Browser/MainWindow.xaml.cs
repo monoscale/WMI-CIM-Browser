@@ -6,7 +6,7 @@ using System;
 using System.Windows.Controls;
 using System.Data;
 using WMI_CIM_Browser.ViewModel;
-using SWbemScripting;
+using SWbemLibrary;
 
 namespace WMI_CIM_Browser {
     /// <summary>

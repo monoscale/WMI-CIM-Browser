@@ -1,5 +1,4 @@
-﻿using SWbemScripting;
-using System.Management;
+﻿using SWbemLibrary;
 
 namespace WMI_CIM_Browser.ViewModel {
     public class DataGridClassQualifierView {
