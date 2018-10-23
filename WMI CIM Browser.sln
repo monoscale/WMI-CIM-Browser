@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMI CIM Browser", "WMI CIM 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWbemScripting", "SWbemScripting\SWbemScripting.csproj", "{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwbemLibrary.Tests", "SwbemLibrary.Tests\SwbemLibrary.Tests.csproj", "{D2658A98-2000-4E78-8D4B-83E9DA78EFBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2658A98-2000-4E78-8D4B-83E9DA78EFBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2658A98-2000-4E78-8D4B-83E9DA78EFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2658A98-2000-4E78-8D4B-83E9DA78EFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2658A98-2000-4E78-8D4B-83E9DA78EFBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

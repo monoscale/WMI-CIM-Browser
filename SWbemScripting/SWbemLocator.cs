@@ -1,4 +1,6 @@
-﻿using System.Management;
+﻿using SWbemLibrary.Exceptions;
+using System.Management;
+using System.Runtime.InteropServices;
 
 namespace SWbemLibrary {
     public class SWbemLocator {
@@ -24,16 +26,14 @@ namespace SWbemLibrary {
             , string strAuthority = ""
             , int iSecurityFlags = 0
             , SWbemNamedValueSet objwbemNamedValueSet = null) {
+
             ManagementPath path = new ManagementPath {
                 Server = strServer,
                 NamespacePath = strNamespace
             };
             ManagementScope scope = new ManagementScope(path);
             return new SWbemService(scope);
-            /*  scope.Options.Username = strUser;
-              scope.Options.Password = strPassword;
-              scope.Options.Locale = strLocale;
-              scope.Options.Authority = strAuthority;  */
+
         }
     }
 }
