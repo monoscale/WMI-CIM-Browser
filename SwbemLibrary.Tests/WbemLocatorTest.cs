@@ -3,7 +3,7 @@ using WbemLibrary;
 
 namespace WbemLibrary.Tests {
     [TestClass]
-    public class SWbemLocatorTest {
+    public class WbemLocatorTest {
 
         private WbemLocator locator;
 

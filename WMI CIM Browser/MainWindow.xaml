@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WMI_CIM_Browser"
+        xmlns:controls="clr-namespace:WMI_CIM_Browser.Controls"
         mc:Ignorable="d"
         Title="WMI CIM Browser">
     <Grid Margin="20">
@@ -31,7 +32,7 @@
         </StackPanel>
 
 
-        <TreeView Name="ClassNavigator"
+        <controls:WbemTreeView x:Name="ClassNavigator"
                   Grid.Column="0" Grid.Row="1" 
                   HorizontalAlignment="Stretch" 
                   Width="400"
@@ -54,7 +55,7 @@
 
         <TabControl  Grid.Column="1" Grid.Row="1">
             <TabItem Header="Properties">
-                <DataGrid Name="PropertyList"></DataGrid>
+                <DataGrid Name="PropertyList" SelectedCellsChanged="PropertyList_SelectedCellsChanged"></DataGrid>
             </TabItem>
             <TabItem Header="Methods">
                 <DataGrid Name="MethodList"></DataGrid>
