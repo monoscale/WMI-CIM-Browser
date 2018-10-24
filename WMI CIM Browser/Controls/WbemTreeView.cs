@@ -21,6 +21,7 @@ namespace WMI_CIM_Browser.Controls {
 
 
         public void PopulateTreeView(IList<WbemObject> objects) {
+            Items.Clear(); 
 
             // Dictionary with the key a WbemObject en the value the corresponding wbemTreeViewItem for this wbemobject
             Dictionary<WbemObject, WbemTreeViewItem> subClassesForClass = new Dictionary<WbemObject, WbemTreeViewItem>();
@@ -33,7 +34,7 @@ namespace WMI_CIM_Browser.Controls {
 
                     };
                     subClassesForClass.Add(mObject, wbemTreeViewItem);
-                    this.Items.Add(wbemTreeViewItem);
+                    Items.Add(wbemTreeViewItem);
                 } else {
                     // find the direct superclass of the current managementobject
                     foreach (WbemObject innermObject in subClassesForClass.Keys.ToList()) {
@@ -50,8 +51,6 @@ namespace WMI_CIM_Browser.Controls {
                     }
                 }
             }
-        }
-
-        
+        } 
     }
 }

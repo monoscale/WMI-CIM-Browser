@@ -55,5 +55,8 @@
     <Compile Include="WbemService.cs" />
     <Compile Include="SystemProperties.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Domain Class Diagram.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

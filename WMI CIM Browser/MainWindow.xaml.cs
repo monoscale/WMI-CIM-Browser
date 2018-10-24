@@ -27,11 +27,6 @@ namespace WMI_CIM_Browser {
             PopulateClassNavigator("root");
         }
 
-        private WbemObject GetSWbemObjectForwbemTreeViewItem(WbemTreeViewItem wbemTreeViewItem) {
-            return wbemTreeViewItem.DataContext;
-        }
-
-
         /// <summary>
         /// Get the classes from a namespace
         /// </summary>
@@ -50,11 +45,9 @@ namespace WMI_CIM_Browser {
         /// </summary>
         /// <param name="nameSpace">The namespace to retrieve the classes from.</param>
         private void PopulateClassNavigator(string nameSpace) {
-
-            ClassNavigator.Items.Clear();
             try {
                 service = locator.ConnectServer(".", nameSpace);
-                IList<WbemObject> objects = service.ExecQuery("select * from meta_class");
+                IList<WbemObject> objects = service.GetAllObjects();
                 ClassNavigator.PopulateTreeView(objects);
             } catch (ManagementException me) {
                 TextBlockErrors.Text = me.Message;
@@ -92,31 +85,47 @@ namespace WMI_CIM_Browser {
 
             PropertyList.ItemsSource = properties;
             MethodList.ItemsSource = methods;
-  
+
         }
 
+        private void TextBoxClass_TextChanged(object sender, TextChangedEventArgs e) {
+            // something to do with searching
+        }
 
-        /// <summary>
-        /// When clicking 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TextBlockCurrentClass_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e) {
-            WbemObject mObject = GetSWbemObjectForwbemTreeViewItem(ClassNavigator.SelectedItem);
+        private void PropertyList_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e) {
+            // individual attribute qualifiers
+
+        }
+
+        private void TextBlockCurrentClass_MouseRightButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e) {
+            ContextMenu contextMenu = new ContextMenu();
+
+            MenuItem showQualifiers = new MenuItem();
+            showQualifiers.Header = "Show Class Qualifiers";
+            showQualifiers.Click += ShowClassQualifiers;
+            contextMenu.Items.Add(showQualifiers);
+
+            MenuItem showInstances = new MenuItem();
+            showInstances.Header = "Show Class Instances";
+            showInstances.Click += ShowClassInstances;
+            contextMenu.Items.Add(showInstances);
+
+            contextMenu.IsOpen = true;
+        }
+
+        private void ShowClassInstances(object sender, RoutedEventArgs e) {
+            WbemObject mObject = ClassNavigator.SelectedItem.DataContext;
+            IList<WbemObject> instances = service.InstancesOf(mObject.Path.ClassName);
+            ExtraDetails.ItemsSource = instances;
+        }
+
+        private void ShowClassQualifiers(object sender, RoutedEventArgs e) {
+            WbemObject mObject = ClassNavigator.SelectedItem.DataContext;
 
             IList<DataGridClassQualifierView> qualifiers = (from WbemQualifier property
                                                             in mObject.Qualifiers.Values
                                                             select property).ToList().Select(s => new DataGridClassQualifierView(s)).ToList();
             ExtraDetails.ItemsSource = qualifiers;
-        }
-
-        private void TextBoxClass_TextChanged(object sender, TextChangedEventArgs e) {
-
-        }
-
-        private void PropertyList_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e) {
-           
-
         }
     }
 }

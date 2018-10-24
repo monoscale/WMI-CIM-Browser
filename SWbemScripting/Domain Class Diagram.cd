@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WbemLibrary.WbemLocator">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>WbemLocator.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SWbemSecurity" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WbemLibrary.WbemService">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>WbemService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WbemLibrary.WbemSecurity">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WbemSecurity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WbemLibrary.WbemObject">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <AssociationLine Name="SystemProperties" Type="WbemLibrary.WbemProperty">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.072" Y="0.457" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAIAAAAAAAAAAAAAAAAABAAAAAADAEA=</HashCode>
+      <FileName>WbemObject.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Path" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="SystemProperties" />
+      <Property Name="Properties" />
+      <Property Name="Qualifiers" />
+      <Property Name="Methods" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="WbemLibrary.WbemProperty">
+    <Position X="8.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAQAAAAQAAAgAAAAAAAAgAAgAAAA=</HashCode>
+      <FileName>WbemProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WbemLibrary.WbemQualifier">
+    <Position X="6.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEIAAABAQAAAAAAABQACAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>WbemQualifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WbemLibrary.WbemMethod">
+    <Position X="4.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WbemMethod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WbemLibrary.WbemObjectPath">
+    <Position X="9.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAACAAAIAABAAAAAAAAAAIAAIAAAAAkAAAAA=</HashCode>
+      <FileName>WbemObjectPath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

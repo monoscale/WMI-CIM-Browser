@@ -51,7 +51,7 @@
                    Foreground="Blue"
                    FontWeight="Bold"
                    Cursor="Hand"
-                   PreviewMouseDown="TextBlockCurrentClass_PreviewMouseDown" />
+                   MouseRightButtonUp="TextBlockCurrentClass_MouseRightButtonUp"/>
 
         <TabControl  Grid.Column="1" Grid.Row="1">
             <TabItem Header="Properties">
