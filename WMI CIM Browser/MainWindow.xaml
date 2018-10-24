@@ -55,16 +55,17 @@
 
         <TabControl  Grid.Column="1" Grid.Row="1">
             <TabItem Header="Properties">
-                <DataGrid Name="PropertyList" SelectedCellsChanged="PropertyList_SelectedCellsChanged"></DataGrid>
+                <DataGrid Name="PropertyList" 
+                          SelectionMode="Single"
+                          SelectedCellsChanged="PropertyList_SelectedCellsChanged"/>
             </TabItem>
             <TabItem Header="Methods">
-                <DataGrid Name="MethodList"></DataGrid>
+                <DataGrid Name="MethodList"
+                          SelectionMode="Single"/>
             </TabItem>
         </TabControl>
 
-        <DataGrid Name="ExtraDetails" Grid.Column="2" Grid.Row="1" Margin="0,25,0,0">
-            
-        </DataGrid>
+        <DataGrid Name="ExtraDetails" Grid.Column="2" Grid.Row="1" Margin="0,25,0,0"/>
 
     </Grid>
 </Window>

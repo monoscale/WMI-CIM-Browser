@@ -5,9 +5,9 @@ using System.Linq;
 using System;
 using System.Windows.Controls;
 using System.Data;
-using WMI_CIM_Browser.ViewModel;
 using WbemLibrary;
 using WMI_CIM_Browser.Controls;
+using WMI_CIM_Browser.ViewModel;
 
 namespace WMI_CIM_Browser {
     /// <summary>
@@ -33,10 +33,7 @@ namespace WMI_CIM_Browser {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void TextBoxNamespace_KeyDown(object sender, System.Windows.Input.KeyEventArgs e) {
-            if (e.Key != System.Windows.Input.Key.Enter) {
-                return;
-            }
-
+            if (e.Key != System.Windows.Input.Key.Enter) { return; }
             PopulateClassNavigator(TextBoxNamespace.Text);
         }
 
@@ -76,12 +73,8 @@ namespace WMI_CIM_Browser {
             TextBlockCurrentClass.Text = mObject.Path.ClassName;
             TextBlockCurrentClass.DataContext = mObject;
 
-            IList<DataGridPropertyView> properties = (from WbemProperty property
-                                                      in mObject.GetAllProperties().Values
-                                                      select property).ToList().Select(s => new DataGridPropertyView(s)).ToList();
-            IList<WbemMethod> methods = (from WbemMethod method
-                                          in mObject.Methods.Values
-                                         select method).ToList();
+            IList<DataGridPropertyView> properties = mObject.GetAllProperties().Values.Select(s => new DataGridPropertyView(s)).ToList();
+            IList<DataGridMethodView> methods = mObject.Methods.Values.Select(s => new DataGridMethodView(s)).ToList();
 
             PropertyList.ItemsSource = properties;
             MethodList.ItemsSource = methods;
@@ -121,10 +114,7 @@ namespace WMI_CIM_Browser {
 
         private void ShowClassQualifiers(object sender, RoutedEventArgs e) {
             WbemObject mObject = ClassNavigator.SelectedItem.DataContext;
-
-            IList<DataGridClassQualifierView> qualifiers = (from WbemQualifier property
-                                                            in mObject.Qualifiers.Values
-                                                            select property).ToList().Select(s => new DataGridClassQualifierView(s)).ToList();
+            IList<DataGridClassQualifierView> qualifiers = mObject.Qualifiers.Values.Select(s => new DataGridClassQualifierView(s)).ToList();
             ExtraDetails.ItemsSource = qualifiers;
         }
     }

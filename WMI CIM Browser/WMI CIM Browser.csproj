@@ -67,6 +67,7 @@
     <Compile Include="Controls\WbemTreeView.cs" />
     <Compile Include="Controls\WbemTreeViewItem.cs" />
     <Compile Include="ViewModel\DataGridClassQualifierView.cs" />
+    <Compile Include="ViewModel\DataGridMethodView.cs" />
     <Compile Include="ViewModel\DataGridPropertyView.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
