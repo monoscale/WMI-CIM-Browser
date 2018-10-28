@@ -1,6 +1,6 @@
 ﻿using WbemLibrary;
 
-namespace WMI_CIM_Browser.ViewModel {
+namespace WMI_CIM_Browser.ViewModels {
     public class DataGridMethodView {
 
 

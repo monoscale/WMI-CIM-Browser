@@ -26,7 +26,7 @@
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
                 <TextBlock  HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Search class: " VerticalAlignment="Top" Width="110" />
-                <TextBox Name="TextBoxClass" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBoxClass_TextChanged" 
+                <TextBox Name="TextBoxClass" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="TextBoxClass_KeyDown"
                           />
             </StackPanel>
         </StackPanel>
@@ -34,8 +34,7 @@
 
         <controls:WbemTreeView x:Name="ClassNavigator"
                   Grid.Column="0" Grid.Row="1" 
-                  HorizontalAlignment="Stretch" 
-                  Width="400"
+                  HorizontalAlignment="Stretch"
                   DockPanel.Dock="Left" 
                   SelectedItemChanged="ClassNavigator_SelectedItemChanged" />
 

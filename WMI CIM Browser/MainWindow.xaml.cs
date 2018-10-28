@@ -7,7 +7,8 @@ using System.Windows.Controls;
 using System.Data;
 using WbemLibrary;
 using WMI_CIM_Browser.Controls;
-using WMI_CIM_Browser.ViewModel;
+using WMI_CIM_Browser.ViewModels;
+using WMI_CIM_Browser.Windows;
 
 namespace WMI_CIM_Browser {
     /// <summary>
@@ -15,8 +16,10 @@ namespace WMI_CIM_Browser {
     /// </summary>
     public partial class MainWindow : Window {
 
-        WbemLocator locator;
-        WbemService service;
+        private WbemLocator locator;
+        private WbemService service;
+
+        private SearchClassResultWindow searchClassResultWindow;
 
         public MainWindow() {
             InitializeComponent();
@@ -64,10 +67,14 @@ namespace WMI_CIM_Browser {
                 //it just means the user went out of focus
                 return;
             }
+            PopulateClassDetails(ClassNavigator.SelectedItem);
+
+        }
+
+        private void PopulateClassDetails(WbemTreeViewItem wbemTreeViewItem) {
 
             PropertyList.ItemsSource = null;
 
-            WbemTreeViewItem wbemTreeViewItem = ClassNavigator.SelectedItem;
             WbemObject mObject = wbemTreeViewItem.DataContext;
 
             TextBlockCurrentClass.Text = mObject.Path.ClassName;
@@ -78,11 +85,25 @@ namespace WMI_CIM_Browser {
 
             PropertyList.ItemsSource = properties;
             MethodList.ItemsSource = methods;
-
         }
 
-        private void TextBoxClass_TextChanged(object sender, TextChangedEventArgs e) {
-            // something to do with searching
+        private void TextBoxClass_KeyDown(object sender, System.Windows.Input.KeyEventArgs e) {
+            if (e.Key != System.Windows.Input.Key.Enter) { return; }
+            IList<WbemTreeViewItem> classes = ClassNavigator.Search(TextBoxClass.Text);
+            searchClassResultWindow = new SearchClassResultWindow(classes);
+            searchClassResultWindow.ClassNameList.MouseDoubleClick += ClassNameList_MouseDoubleClick;
+            searchClassResultWindow.Show();
+        }
+
+        private void ClassNameList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) {
+            ListBox listBox = (ListBox)sender;
+            ListBoxItem listBoxItem = (ListBoxItem)listBox.SelectedItem;
+            WbemTreeViewItem item = (WbemTreeViewItem)listBoxItem.DataContext;
+            PopulateClassDetails(item);
+            searchClassResultWindow.Close();
+            searchClassResultWindow = null;
+
+
         }
 
         private void PropertyList_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e) {
@@ -117,5 +138,7 @@ namespace WMI_CIM_Browser {
             IList<DataGridClassQualifierView> qualifiers = mObject.Qualifiers.Values.Select(s => new DataGridClassQualifierView(s)).ToList();
             ExtraDetails.ItemsSource = qualifiers;
         }
+
+
     }
 }

@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using WbemLibrary;
 
@@ -17,8 +20,6 @@ namespace WMI_CIM_Browser.Controls {
                 return (WbemTreeViewItem) base.SelectedItem;
             }
         }
-
-
 
         public void PopulateTreeView(IList<WbemObject> objects) {
             Items.Clear(); 
@@ -51,6 +52,39 @@ namespace WMI_CIM_Browser.Controls {
                     }
                 }
             }
-        } 
+        }
+
+        /// <summary>
+        /// Searches the treeview for classes that matches the given string.
+        /// </summary>
+        /// <param name="pattern">The string to match.</param>
+        /// <returns>A list containing all the WbemTreeViewInstances that represent a class that matches the pattern.</returns>
+        public IList<WbemTreeViewItem> Search(string pattern) {
+
+            // The order of traversal does not matter since we have to scan every node anyway
+
+            IList<WbemTreeViewItem> resultClasses = new List<WbemTreeViewItem>();  
+            Stack<WbemTreeViewItem> treeViewItemStack = new Stack<WbemTreeViewItem>();
+            foreach(WbemTreeViewItem t in Items) { // initialize
+                treeViewItemStack.Push(t);
+            }          
+
+            while(treeViewItemStack.Count != 0) {
+                WbemTreeViewItem it = treeViewItemStack.Peek();
+                treeViewItemStack.Pop();
+                foreach(WbemTreeViewItem inner in it.Items) {
+                    treeViewItemStack.Push(inner);
+                }
+
+                WbemObject wbemObject = it.DataContext;
+                if(Regex.IsMatch(wbemObject.Path.ClassName.ToLower(), pattern.ToLower())){
+                    resultClasses.Add(it);
+                }
+            }
+
+            return resultClasses;
+        }
+
+ 
     }
 }

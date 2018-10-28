@@ -56,6 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Windows\SearchClassResultWindow.xaml.cs">
+      <DependentUpon>SearchClassResultWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,13 +69,17 @@
     </Compile>
     <Compile Include="Controls\WbemTreeView.cs" />
     <Compile Include="Controls\WbemTreeViewItem.cs" />
-    <Compile Include="ViewModel\DataGridClassQualifierView.cs" />
-    <Compile Include="ViewModel\DataGridMethodView.cs" />
-    <Compile Include="ViewModel\DataGridPropertyView.cs" />
+    <Compile Include="ViewModels\DataGridClassQualifierView.cs" />
+    <Compile Include="ViewModels\DataGridMethodView.cs" />
+    <Compile Include="ViewModels\DataGridPropertyView.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\SearchClassResultWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
