@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="SearchClassResult" Height="450" Width="800">
-    <ListBox Name="ClassNameList">
+    <ListBox Name="ClassNameList" SelectionChanged="ClassNameList_SelectionChanged">
         
     </ListBox>
 </Window>

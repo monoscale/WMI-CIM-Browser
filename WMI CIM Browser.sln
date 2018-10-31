@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMI CIM Browser", "WMI CIM Browser\WMI CIM Browser.csproj", "{88E66075-6E9C-417F-8000-ABC2FF132126}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WbemLibrary", "SWbemScripting\WbemLibrary.csproj", "{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WbemLibrary", "WbemLibrary\WbemLibrary.csproj", "{ED9977B8-457E-430A-A0EA-E78DEC3AD33E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WbemLibrary.Tests", "SwbemLibrary.Tests\WbemLibrary.Tests.csproj", "{D2658A98-2000-4E78-8D4B-83E9DA78EFBD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WbemLibrary.Tests", "WbemLibrary.Tests\WbemLibrary.Tests.csproj", "{D2658A98-2000-4E78-8D4B-83E9DA78EFBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>wmi.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -108,7 +111,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SWbemScripting\WbemLibrary.csproj">
+    <Resource Include="wmi.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WbemLibrary\WbemLibrary.csproj">
       <Project>{ed9977b8-457e-430a-a0ea-e78dec3ad33e}</Project>
       <Name>WbemLibrary</Name>
     </ProjectReference>

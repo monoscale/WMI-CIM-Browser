@@ -60,7 +60,8 @@ namespace WMI_CIM_Browser {
             if (e.Key != System.Windows.Input.Key.Enter) { return; }
             IList<WbemTreeViewItem> classes = ClassNavigator.Search(TextBoxClass.Text);
             searchClassResultWindow = new SearchClassResultWindow(classes);
-            searchClassResultWindow.ClassNameList.MouseDoubleClick += ClassNameList_MouseDoubleClick;
+            searchClassResultWindow.ClassNameSelected += SearchClassResultWindow_ClassNameSelected1;
+            //searchClassResultWindow.ClassNameSelected += SearchClassResultWindow_ClassNameSelected;
             searchClassResultWindow.Show();
         }
 
@@ -68,14 +69,16 @@ namespace WMI_CIM_Browser {
         /// When double clicking in the list of classnames from the search operation (in the SearchClassResultWindow),
         /// we retrieve the classname and load the details. The SearchClassResultWindow will also be closed.
         /// </summary>
-        private void ClassNameList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) {
-            ListBox listBox = (ListBox)sender;
-            ListBoxItem listBoxItem = (ListBoxItem)listBox.SelectedItem;
-            WbemTreeViewItem item = (WbemTreeViewItem)listBoxItem.DataContext;
-            PopulateClassDetails(item);
+        private void SearchClassResultWindow_ClassNameSelected1(object sender, WbemTreeViewItem e) {
+            PopulateClassDetails(e);
             searchClassResultWindow.Close();
             searchClassResultWindow = null;
         }
+
+
+
+       
+
 
 
         /// <summary>

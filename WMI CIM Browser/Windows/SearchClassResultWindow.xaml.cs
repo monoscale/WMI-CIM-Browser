@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using WMI_CIM_Browser.Controls;
@@ -8,6 +9,9 @@ namespace WMI_CIM_Browser.Windows {
     /// Interaction logic for SearchClassResult.xaml
     /// </summary>
     public partial class SearchClassResultWindow : Window {
+
+
+        public event EventHandler<WbemTreeViewItem> ClassNameSelected;
 
         public SearchClassResultWindow() {
             InitializeComponent();
@@ -21,6 +25,14 @@ namespace WMI_CIM_Browser.Windows {
                 };
                 ClassNameList.Items.Add(listBoxItem);
             }
+        }
+
+        private void ClassNameList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            ListBox listBox = (ListBox)sender;
+            ListBoxItem listBoxItem = (ListBoxItem)listBox.SelectedItem;
+            WbemTreeViewItem item = (WbemTreeViewItem)listBoxItem.DataContext;
+            ClassNameSelected(ClassNameList, item);
+            
         }
     }
 }
