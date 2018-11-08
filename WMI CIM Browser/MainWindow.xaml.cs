@@ -20,14 +20,14 @@ namespace WMI_CIM_Browser {
         private WbemService service;
 
         private SearchClassResultWindow searchClassResultWindow;
-    
+
         public MainWindow() {
             InitializeComponent();
 
             locator = new WbemLocator();
             WindowState = WindowState.Maximized;
 
-            PopulateClassNavigator("root");    
+            PopulateClassNavigator("root");
         }
 
 
@@ -74,12 +74,6 @@ namespace WMI_CIM_Browser {
             searchClassResultWindow.Close();
             searchClassResultWindow = null;
         }
-
-
-
-       
-
-
 
         /// <summary>
         /// When right clicking on the current classname, give a menu to interact with that class.
@@ -145,7 +139,7 @@ namespace WMI_CIM_Browser {
             }
         }
 
-                /// <summary>
+        /// <summary>
         /// Populates the properties and methods from a class that is represented by a wbemTreeViewItem.
         /// </summary>
         /// <param name="wbemTreeViewItem">The WbemTreeViewItem that represents the class</param>

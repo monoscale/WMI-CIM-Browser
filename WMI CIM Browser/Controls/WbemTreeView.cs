@@ -10,19 +10,19 @@ namespace WMI_CIM_Browser.Controls {
     /// <summary>
     /// Subclass of TreeView which automatically assumes its Items will be WbemTreeViewItem instances. 
     /// </summary>
-    public class WbemTreeView : TreeView{
+    public class WbemTreeView : TreeView {
 
         /// <summary>
         /// Returns the current selected WbemTreeViewItem
         /// </summary>
         public new WbemTreeViewItem SelectedItem {
             get {
-                return (WbemTreeViewItem) base.SelectedItem;
+                return (WbemTreeViewItem)base.SelectedItem;
             }
         }
 
         public void PopulateTreeView(IList<WbemObject> objects) {
-            Items.Clear(); 
+            Items.Clear();
 
             // Dictionary with the key a WbemObject en the value the corresponding wbemTreeViewItem for this wbemobject
             Dictionary<WbemObject, WbemTreeViewItem> subClassesForClass = new Dictionary<WbemObject, WbemTreeViewItem>();
@@ -63,28 +63,25 @@ namespace WMI_CIM_Browser.Controls {
 
             // The order of traversal does not matter since we have to scan every node anyway
 
-            IList<WbemTreeViewItem> resultClasses = new List<WbemTreeViewItem>();  
+            IList<WbemTreeViewItem> resultClasses = new List<WbemTreeViewItem>();
             Stack<WbemTreeViewItem> treeViewItemStack = new Stack<WbemTreeViewItem>();
-            foreach(WbemTreeViewItem t in Items) { // initialize
+            foreach (WbemTreeViewItem t in Items) { // initialize
                 treeViewItemStack.Push(t);
-            }          
+            }
 
-            while(treeViewItemStack.Count != 0) {
+            while (treeViewItemStack.Count != 0) {
                 WbemTreeViewItem it = treeViewItemStack.Peek();
                 treeViewItemStack.Pop();
-                foreach(WbemTreeViewItem inner in it.Items) {
+                foreach (WbemTreeViewItem inner in it.Items) {
                     treeViewItemStack.Push(inner);
                 }
 
                 WbemObject wbemObject = it.DataContext;
-                if(Regex.IsMatch(wbemObject.Path.ClassName.ToLower(), pattern.ToLower())){
+                if (Regex.IsMatch(wbemObject.Path.ClassName.ToLower(), pattern.ToLower())) {
                     resultClasses.Add(it);
                 }
             }
-
             return resultClasses;
         }
-
- 
     }
 }
