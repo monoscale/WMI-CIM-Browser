@@ -5,6 +5,7 @@ using System.Linq;
 using System;
 using System.Windows.Controls;
 using System.Data;
+using System.Diagnostics;
 using WbemLibrary;
 using WMI_CIM_Browser.Controls;
 using WMI_CIM_Browser.ViewModels;
@@ -112,6 +113,13 @@ namespace WMI_CIM_Browser {
             WbemObject mObject = ClassNavigator.SelectedItem.DataContext;
  
             IEnumerable<WbemObject> instances = service.InstancesOf(mObject.Path.ClassName);
+
+            //todo: figure out how to show the different properties of the instances
+            foreach(WbemObject instance in instances) {
+                WbemProperty prop;
+                instance.Properties.TryGetValue("Name", out prop);
+                Debug.WriteLine(prop.Value);
+            }
             ExtraDetails.ItemsSource = instances;
         }
 

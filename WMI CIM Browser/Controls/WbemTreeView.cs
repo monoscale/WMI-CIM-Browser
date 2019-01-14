@@ -17,41 +17,38 @@ namespace WMI_CIM_Browser.Controls {
         /// Returns the current selected WbemTreeViewItem
         /// </summary>
         public new WbemTreeViewItem SelectedItem => (WbemTreeViewItem)base.SelectedItem;
-
+        
+        /// <summary>
+        /// Populates a logical treeview, where each WbemObject represents a node, which can have other WbemObjects as children.
+        /// </summary>
+        /// <param name="objects">List of Wbemobjects</param>
         public void PopulateTreeView(IEnumerable<WbemObject> objects) {
-
-
-
             Items.Clear();
 
-            // Dictionary with the key a WbemObject en the value the corresponding wbemTreeViewItem for this wbemobject
-            Dictionary<WbemObject, WbemTreeViewItem> subClassesForClass = new Dictionary<WbemObject, WbemTreeViewItem>();
-            foreach (WbemObject mObject in objects) {
-                string superclass = (string)mObject.SystemProperties[SystemProperties.__SUPERCLASS].Value;
-                if (superclass == null) { // current mObject is a root class
-                    WbemTreeViewItem wbemTreeViewItem = new WbemTreeViewItem {
-                        Header = mObject.Path.ClassName,
-                        DataContext = mObject
+            Dictionary<string, WbemTreeViewItem> wbemTreeViewItemForClassName = new Dictionary<string, WbemTreeViewItem>();
+            foreach (WbemObject wbemObject in objects) {
+                WbemTreeViewItem newWbemTreeViewItem = new WbemTreeViewItem {
+                    Header = wbemObject.Path.ClassName,
+                    DataContext = wbemObject
+                };
 
-                    };
-                    subClassesForClass.Add(mObject, wbemTreeViewItem);
-                    Items.Add(wbemTreeViewItem);
-                } else {
-                    // find the direct superclass of the current managementobject
-                    foreach (WbemObject innermObject in subClassesForClass.Keys.ToList()) {
-                        if ((string)mObject.SystemProperties[SystemProperties.__SUPERCLASS].Value == innermObject.Path.ClassName) {
-                            // we found the superclass, add mObject to the wbemTreeViewItem of innermObject
-                            WbemTreeViewItem innerwbemTreeViewItem = new WbemTreeViewItem {
-                                Header = mObject.Path.ClassName,
-                                DataContext = mObject
-                            };
-                            WbemTreeViewItem outerwbemTreeViewItem = subClassesForClass[innermObject];
-                            outerwbemTreeViewItem.Items.Add(innerwbemTreeViewItem);
-                            subClassesForClass.Add(mObject, innerwbemTreeViewItem); // The current object can also have children
-                        }
-                    }
+                string superclass = (string) wbemObject.SystemProperties[SystemProperties.__SUPERCLASS].Value;
+                string classname = (string)wbemObject.SystemProperties[SystemProperties.__CLASS].Value;
+
+                // current wbemObject is a root node.
+                if (superclass == null) {
+                    wbemTreeViewItemForClassName[classname] = newWbemTreeViewItem;
+                    Items.Add(newWbemTreeViewItem);
+                }
+                // current wbemObject is a child node, the parent node already exists in memory
+                else {
+                    WbemTreeViewItem parent = wbemTreeViewItemForClassName[superclass];
+                    parent.Items.Add(newWbemTreeViewItem);
+                    wbemTreeViewItemForClassName[classname] = newWbemTreeViewItem;
                 }
             }
+            
+          
         }
 
         /// <summary>
