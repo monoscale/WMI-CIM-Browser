@@ -18,7 +18,7 @@ namespace WMI_CIM_Browser.Controls {
         /// </summary>
         public new WbemTreeViewItem SelectedItem => (WbemTreeViewItem)base.SelectedItem;
 
-        public void PopulateTreeView(IList<WbemObject> objects) {
+        public void PopulateTreeView(IEnumerable<WbemObject> objects) {
 
 
 
@@ -59,7 +59,7 @@ namespace WMI_CIM_Browser.Controls {
         /// </summary>
         /// <param name="pattern">The string to match.</param>
         /// <returns>A list containing all the WbemTreeViewInstances that represent a class that matches the pattern.</returns>
-        public IList<WbemTreeViewItem> Search(string pattern) {
+        public IEnumerable<WbemTreeViewItem> Search(string pattern) {
 
             // The order of traversal does not matter since we have to scan every node anyway
 

@@ -58,7 +58,7 @@ namespace WMI_CIM_Browser {
         /// </summary>
         private void TextBoxClass_KeyDown(object sender, System.Windows.Input.KeyEventArgs e) {
             if (e.Key != System.Windows.Input.Key.Enter) { return; }
-            IList<WbemTreeViewItem> classes = ClassNavigator.Search(TextBoxClass.Text);
+            IEnumerable<WbemTreeViewItem> classes = ClassNavigator.Search(TextBoxClass.Text);
             searchClassResultWindow = new SearchClassResultWindow(classes);
             searchClassResultWindow.ClassNameSelected += SearchClassResultWindow_ClassNameSelected;
             searchClassResultWindow.Show();
@@ -111,7 +111,7 @@ namespace WMI_CIM_Browser {
         private void ShowClassInstances(object sender, RoutedEventArgs e) {
             WbemObject mObject = ClassNavigator.SelectedItem.DataContext;
  
-            IList<WbemObject> instances = service.InstancesOf(mObject.Path.ClassName);
+            IEnumerable<WbemObject> instances = service.InstancesOf(mObject.Path.ClassName);
             ExtraDetails.ItemsSource = instances;
         }
 
@@ -136,7 +136,7 @@ namespace WMI_CIM_Browser {
         private void PopulateClassNavigator(string nameSpace) {
             try {
                 service = locator.ConnectServer(".", nameSpace);
-                IList<WbemObject> objects = service.GetAllObjects();
+                IEnumerable<WbemObject> objects = service.GetAllObjects();
                 ClassNavigator.PopulateTreeView(objects);
             } catch (ManagementException me) {
                 TextBlockErrors.Text = me.Message;

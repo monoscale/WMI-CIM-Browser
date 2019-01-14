@@ -18,7 +18,7 @@ namespace WMI_CIM_Browser.Windows {
             Title = "Search results";
         }
 
-        public SearchClassResultWindow(IList<WbemTreeViewItem> classes) : this() {
+        public SearchClassResultWindow(IEnumerable<WbemTreeViewItem> classes) : this() {
             foreach (WbemTreeViewItem classRepr in classes) {
                 ListBoxItem listBoxItem = new ListBoxItem {
                     Content = classRepr.DataContext.Path.ClassName,
