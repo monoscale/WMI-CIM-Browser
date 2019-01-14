@@ -15,11 +15,7 @@ namespace WMI_CIM_Browser.Controls {
         /// <summary>
         /// Returns the current selected WbemTreeViewItem
         /// </summary>
-        public new WbemTreeViewItem SelectedItem {
-            get {
-                return (WbemTreeViewItem)base.SelectedItem;
-            }
-        }
+        public new WbemTreeViewItem SelectedItem => (WbemTreeViewItem) base.SelectedItem;
 
         public void PopulateTreeView(IList<WbemObject> objects) {
             Items.Clear();

@@ -71,6 +71,7 @@ namespace WMI_CIM_Browser {
         private void SearchClassResultWindow_ClassNameSelected(object sender, WbemTreeViewItem wbemTreeViewItem) {
             PopulateClassDetails(wbemTreeViewItem);
             wbemTreeViewItem.IsSelected = true;
+            
             searchClassResultWindow.Close();
             searchClassResultWindow = null;
         }

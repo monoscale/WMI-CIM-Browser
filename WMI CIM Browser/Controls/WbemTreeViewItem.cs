@@ -14,12 +14,8 @@ namespace WMI_CIM_Browser.Controls {
         /// The DataContext attribute can only hold values of type WbemObject.
         /// </summary>
         public new WbemObject DataContext {
-            get {
-                return (WbemObject)base.DataContext;
-            }
-            set {
-                base.DataContext = value;
-            }
+            get => (WbemObject)base.DataContext;
+            set => base.DataContext = value;
         }
     }
 }
