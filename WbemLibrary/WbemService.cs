@@ -15,9 +15,14 @@ namespace WbemLibrary {
             return ExecQuery("select * from meta_class");
         }
 
-        public IList<WbemObject> ExecQuery(string strQuery, string strQueryLanguage = "WQL", int iFlags = 16, WbemNamedValueSet objWbemNamedValueSet = null) {
+        /// <summary>
+        /// The ExecQuery method of the SWbemServices object executes a query to retrieve objects. These objects are available through the returned SWbemObjectSet collection.
+        /// </summary>
+        /// <param name="strQuery">String that contains the text of the query. This parameter cannot be null.</param>
+        /// <returns></returns>
+        public IList<WbemObject> ExecQuery(string strQuery) {
             SelectQuery query = new SelectQuery(strQuery);
-            IList<WbemObject> result = new List<WbemObject>();
+            IList<WbemObject> result;
             using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, query)) {
                 result = (from ManagementObject mObject
                           in searcher.Get()
@@ -28,9 +33,15 @@ namespace WbemLibrary {
             return result;
         }
 
-        public IList<WbemObject> InstancesOf(string strClass, int iFlags = 16, WbemNamedValueSet objWbemNamedValueSet = null) {
+        /// <summary>
+        /// The InstancesOf method returns a list of the instances of a specified class according to the user-specified selection criteria.
+        /// This method implements a simple query. More complex queries may require the use of <seealso cref="ExecQuery"/>
+        /// </summary>
+        /// <param name="strClass">String that contains the name of the class for which instances are desired. This parameter cannot be null.</param>
+        /// <returns></returns>
+        public IList<WbemObject> InstancesOf(string strClass) {
             SelectQuery query = new SelectQuery($"select * from {strClass}");
-            IList<WbemObject> result = new List<WbemObject>();
+            IList<WbemObject> result;
             using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, query)) {
                 result = (from ManagementObject mObject
                           in searcher.Get()

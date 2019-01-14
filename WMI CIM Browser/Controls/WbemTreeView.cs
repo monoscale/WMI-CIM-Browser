@@ -18,6 +18,9 @@ namespace WMI_CIM_Browser.Controls {
         public new WbemTreeViewItem SelectedItem => (WbemTreeViewItem) base.SelectedItem;
 
         public void PopulateTreeView(IList<WbemObject> objects) {
+
+           
+
             Items.Clear();
 
             // Dictionary with the key a WbemObject en the value the corresponding wbemTreeViewItem for this wbemobject
@@ -59,7 +62,7 @@ namespace WMI_CIM_Browser.Controls {
        
             // The order of traversal does not matter since we have to scan every node anyway
 
-            IList<WbemTreeViewItem> resultClasses = new List<WbemTreeViewItem>();
+            List<WbemTreeViewItem> resultClasses = new List<WbemTreeViewItem>();
             Stack<WbemTreeViewItem> treeViewItemStack = new Stack<WbemTreeViewItem>();
             foreach (WbemTreeViewItem t in Items) { // initialize
                 treeViewItemStack.Push(t);
@@ -77,6 +80,9 @@ namespace WMI_CIM_Browser.Controls {
                     resultClasses.Add(it);
                 }
             }
+
+           
+            resultClasses.Sort((x, y) => String.Compare(x.DataContext.Path.ClassName, y.DataContext.Path.ClassName, StringComparison.InvariantCulture));
             return resultClasses;
         }
     }

@@ -72,6 +72,7 @@ namespace WMI_CIM_Browser {
             PopulateClassDetails(wbemTreeViewItem);
             wbemTreeViewItem.IsSelected = true;
             
+            
             searchClassResultWindow.Close();
             searchClassResultWindow = null;
         }
@@ -106,6 +107,7 @@ namespace WMI_CIM_Browser {
         /// </summary>
         private void ShowClassInstances(object sender, RoutedEventArgs e) {
             WbemObject mObject = ClassNavigator.SelectedItem.DataContext;
+ 
             IList<WbemObject> instances = service.InstancesOf(mObject.Path.ClassName);
             ExtraDetails.ItemsSource = instances;
         }
