@@ -60,7 +60,7 @@ namespace WMI_CIM_Browser.Controls {
         /// <param name="pattern">The string to match.</param>
         /// <returns>A list containing all the WbemTreeViewInstances that represent a class that matches the pattern.</returns>
         public IList<WbemTreeViewItem> Search(string pattern) {
-
+       
             // The order of traversal does not matter since we have to scan every node anyway
 
             IList<WbemTreeViewItem> resultClasses = new List<WbemTreeViewItem>();

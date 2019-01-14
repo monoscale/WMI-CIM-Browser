@@ -14,7 +14,7 @@ namespace WMI_CIM_Browser.ViewModels {
             if (property.IsArray) {
                 CimType = "array of ";
             }
-           // CimType += property.Type.ToString();
+            // CimType += property.Type.ToString();
 
             if (property.Value != null) {
                 if (property.IsArray) {

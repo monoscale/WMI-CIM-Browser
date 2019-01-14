@@ -6,7 +6,7 @@ using WMI_CIM_Browser.Controls;
 
 namespace WMI_CIM_Browser.Windows {
     /// <summary>
-    /// Interaction logic for SearchClassResult.xaml
+    /// Shows the list of found classes and fires an event when a class is clicked.
     /// </summary>
     public partial class SearchClassResultWindow : Window {
 
@@ -15,6 +15,7 @@ namespace WMI_CIM_Browser.Windows {
 
         public SearchClassResultWindow() {
             InitializeComponent();
+            Title = "Search results";
         }
 
         public SearchClassResultWindow(IList<WbemTreeViewItem> classes) : this() {
