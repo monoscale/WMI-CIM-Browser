@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Controls;
 using WbemLibrary;
 
@@ -15,11 +16,11 @@ namespace WMI_CIM_Browser.Controls {
         /// <summary>
         /// Returns the current selected WbemTreeViewItem
         /// </summary>
-        public new WbemTreeViewItem SelectedItem => (WbemTreeViewItem) base.SelectedItem;
+        public new WbemTreeViewItem SelectedItem => (WbemTreeViewItem)base.SelectedItem;
 
         public void PopulateTreeView(IList<WbemObject> objects) {
 
-           
+
 
             Items.Clear();
 
@@ -59,7 +60,7 @@ namespace WMI_CIM_Browser.Controls {
         /// <param name="pattern">The string to match.</param>
         /// <returns>A list containing all the WbemTreeViewInstances that represent a class that matches the pattern.</returns>
         public IList<WbemTreeViewItem> Search(string pattern) {
-       
+
             // The order of traversal does not matter since we have to scan every node anyway
 
             List<WbemTreeViewItem> resultClasses = new List<WbemTreeViewItem>();
@@ -81,9 +82,16 @@ namespace WMI_CIM_Browser.Controls {
                 }
             }
 
-           
-            resultClasses.Sort((x, y) => String.Compare(x.DataContext.Path.ClassName, y.DataContext.Path.ClassName, StringComparison.InvariantCulture));
+            resultClasses.Sort((x, y) => string.Compare(x.DataContext.Path.ClassName, y.DataContext.Path.ClassName, StringComparison.InvariantCulture));
             return resultClasses;
+        }
+
+        public void ExpandTo(WbemTreeViewItem wbemTreeViewItem) {
+            DependencyObject parent = wbemTreeViewItem.Parent;
+            while (parent is WbemTreeViewItem item) {
+                item.IsExpanded = true;
+                parent = item.Parent;
+            }
         }
     }
 }
